@@ -83,7 +83,7 @@ const TaskList = ({ isModalVisible, setIsModalVisible }) => {
                         isDone: true,
                       })
                     );
-                    openNotification("Good job!", "Your is done");
+                    openNotification("Good job!", "Your task is done");
                   }}
                 >
                   <Incomplete />
