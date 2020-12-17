@@ -1,4 +1,4 @@
-import { DN_TASK, RMV_TASK } from "../actions/types";
+import { DN_TASK, UND_TASK } from "../actions/types";
 const defaultState = [];
 const finishedList = (
   state = defaultState,
@@ -8,7 +8,7 @@ const finishedList = (
     case DN_TASK:
       return [...state, finishedTask];
 
-    case RMV_TASK:
+    case UND_TASK:
       return filteredTaskList;
 
     default:

@@ -7,7 +7,7 @@ import {
   ContainerCheck,
 } from "./tasks_style";
 import ModalTask from "../modal";
-import { finishTask } from "../redux/actions/taskList";
+import { finishTask, removeTask } from "../redux/actions/taskList";
 const { Meta } = Card;
 
 const TaskList = ({ isModalVisible, setIsModalVisible }) => {
@@ -24,7 +24,7 @@ const TaskList = ({ isModalVisible, setIsModalVisible }) => {
           />
         </div>
         {tasks.length > 0 ? (
-          tasks.map(({ title, subtitle, description, isDone }, key) => (
+          tasks.map(({ title, subtitle, description }, key) => (
             <Card
               key={key}
               hoverable
@@ -42,6 +42,11 @@ const TaskList = ({ isModalVisible, setIsModalVisible }) => {
 
               <ContainerCheck
                 onClick={() => {
+                  const filtered_list = tasks.filter(
+                    (task) => task.title !== title
+                  );
+                  dispatch(removeTask(filtered_list));
+
                   dispatch(
                     finishTask({
                       title: title,

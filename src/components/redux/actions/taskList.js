@@ -1,4 +1,4 @@
-import { ADD_TASK, RMV_TASK, DN_TASK } from "./types";
+import { ADD_TASK, RMV_TASK, DN_TASK, UND_TASK } from "./types";
 
 export const addTask = (newTask) => {
   return {
@@ -23,7 +23,7 @@ export const finishTask = (finishedTask) => {
 
 export const unmakeTaske = (filteredTaskList) => {
   return {
-    type: RMV_TASK,
+    type: UND_TASK,
     filteredTaskList,
   };
 };
