@@ -1,8 +1,14 @@
 import { Switch, Route } from "react-router-dom";
-const Routes = () => {
+import TaskList from "../taskList";
+const Routes = ({ isModalVisible, setIsModalVisible }) => {
   return (
     <Switch>
-      <Route exact path="/"></Route>
+      <Route exact path="/">
+        <TaskList
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+        />
+      </Route>
     </Switch>
   );
 };

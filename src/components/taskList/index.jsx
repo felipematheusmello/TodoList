@@ -1,16 +1,23 @@
-import { useSelector } from "react-redux";
-import tasks from "../redux/reducers/task_list";
+import { useSelector, useDispatch } from "react-redux";
 import { Card } from "antd";
-import { EmpetyListTitle } from "./tasks_style";
-
+import {
+  EmpetyListTitle,
+  Container,
+  Done,
+  Incomplete,
+  ContainerCheck,
+} from "./tasks_style";
+import ModalTask from "../modal";
 const { Meta } = Card;
 
-const TaskList = () => {
-  const tasks = useSelector((state) => state.tasks);
+const TaskList = ({ isModalVisible, setIsModalVisible }) => {
+  const tasks = useSelector((state) => state.taskList);
+  const dispatch = useDispatch();
+
   return (
-    <div>
+    <Container>
       {tasks.length > 0 ? (
-        tasks.map(({ title, subtitle, description }, key) => (
+        tasks.map(({ title, subtitle, description, isDone }, key) => (
           <Card
             key={key}
             hoverable
@@ -25,11 +32,32 @@ const TaskList = () => {
             <Meta title={title} />
             <h2>{subtitle}</h2>
             <p>{description}</p>
+            {isDone ? (
+              <ContainerCheck
+                onClick={() => {
+                  dispatch();
+                }}
+              >
+                <Done />
+              </ContainerCheck>
+            ) : (
+              <ContainerCheck>
+                <Incomplete />
+              </ContainerCheck>
+            )}
           </Card>
         ))
       ) : (
         <EmpetyListTitle>You have no Tasks to do </EmpetyListTitle>
       )}
-    </div>
+      <div>
+        <ModalTask
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+        />
+      </div>
+    </Container>
   );
 };
+
+export default TaskList;
