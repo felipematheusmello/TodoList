@@ -6,7 +6,7 @@ const finishedList = (
 ) => {
   switch (type) {
     case DN_TASK:
-      return [state, ...finishedTask];
+      return [...state, finishedTask];
 
     case RMV_TASK:
       return filteredTaskList;
