@@ -9,6 +9,8 @@ import {
   PopUp,
 } from "./tasks_style";
 import { unmakeTaske, addTask } from "../redux/actions/taskList";
+import openNotification from "../notification";
+
 const { Meta } = Card;
 const DoneTaskList = () => {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const DoneTaskList = () => {
                   (task) => task.title !== title
                 );
                 dispatch(unmakeTaske(filtered_list));
+                openNotification("Good job!", "Your task was removed");
               }}
             >
               <Close />
@@ -57,6 +60,10 @@ const DoneTaskList = () => {
                     })
                   );
                   dispatch(unmakeTaske(filtered_list));
+                  openNotification(
+                    "Good job!",
+                    "You put your task in tasks to complete"
+                  );
                 }}
               >
                 <Done />

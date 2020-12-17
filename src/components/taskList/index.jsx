@@ -10,7 +10,7 @@ import {
 } from "./tasks_style";
 import ModalTask from "../modal";
 import TaskForm from "../form";
-
+import openNotification from "../notification";
 import { finishTask, removeTask } from "../redux/actions/taskList";
 const { Meta } = Card;
 
@@ -48,6 +48,7 @@ const TaskList = ({ isModalVisible, setIsModalVisible }) => {
                     (task) => task.title !== title
                   );
                   dispatch(removeTask(filtered_list));
+                  openNotification("Good job!", "Your task was removed");
                 }}
               >
                 <Close />
@@ -82,6 +83,7 @@ const TaskList = ({ isModalVisible, setIsModalVisible }) => {
                         isDone: true,
                       })
                     );
+                    openNotification("Good job!", "Your is done");
                   }}
                 >
                   <Incomplete />

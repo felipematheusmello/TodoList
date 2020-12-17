@@ -1,6 +1,8 @@
 import { Form, Input, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { addTask } from "../redux/actions/taskList";
+import openNotification from "../notification";
+
 const tailLayout = {
   wrapperCol: { offset: 11, span: 16 },
 };
@@ -11,6 +13,7 @@ const TaskForm = () => {
     console.log("Success:", values);
 
     dispatch(addTask(values));
+    openNotification("Nice!", "Your new task was added sucesfully");
   };
 
   const onFinishFailed = (errorInfo) => {
