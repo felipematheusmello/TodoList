@@ -1,18 +1,23 @@
 import styled from "styled-components";
-import { FaPlus } from "react-icons/fa";
+import { AiFillCloseCircle } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
+import { Popconfirm } from "antd";
 export const EmpetyListTitle = styled.h1`
   @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
   color: #ffd66b;
   font-family: "Noto Sans JP", sans-serif;
 `;
+export const PopUp = styled(Popconfirm)`
+  position: absolute;
+  z-index: 1;
+`;
+export const Close = styled(AiFillCloseCircle)`
+  font-size: 25px;
+  color: #f52d2d;
 
-export const PlusTask = styled(FaPlus)`
-  font-size: 40px;
-  color: #61b15a;
-  margin: 20px;
   :hover {
     cursor: pointer;
+    color: #ee4f4f;
   }
 `;
 

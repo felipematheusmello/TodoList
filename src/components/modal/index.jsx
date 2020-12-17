@@ -1,11 +1,6 @@
-import { Modal, Button } from "antd";
-import TaskForm from "../form";
+import { Modal } from "antd";
 
-const ModalTask = ({ isModalVisible, setIsModalVisible }) => {
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
+const ModalTask = ({ isModalVisible, setIsModalVisible, children }) => {
   const handleOk = () => {
     setIsModalVisible(false);
   };
@@ -15,16 +10,13 @@ const ModalTask = ({ isModalVisible, setIsModalVisible }) => {
   };
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
       <Modal
         title="Basic Modal"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <TaskForm />
+        {children}
       </Modal>
     </>
   );
